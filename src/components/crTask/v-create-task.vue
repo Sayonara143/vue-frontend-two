@@ -16,7 +16,7 @@
 
 <script>
 import vError from '../error/v-error.vue'
-const mailRegex = /[A-Za-z0-9_]/
+const mailRegex = /[A-Za-z0-9_,.!?'']/
 export default {
   name: 'vCreateTask',
   metaInfo: {
@@ -51,7 +51,7 @@ export default {
     },
     second: function (event) {
       if (this.firstX < event.changedTouches[0].screenX) {
-        if ((this.firstY > event.changedTouches[0].screenY - 20) && (this.firstY < event.changedTouches[0].screenY + 20)) {
+        if ((this.firstY > event.changedTouches[0].screenY - 50) && (this.firstY < event.changedTouches[0].screenY + 50) && (event.changedTouches[0].screenX - this.firstX >= 100)) {
           this.$router.push({name: 'vTask'})
         }
       }

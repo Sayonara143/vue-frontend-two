@@ -44,7 +44,7 @@ export default {
     },
     second: function (event) {
       if (this.firstX > event.changedTouches[0].screenX) {
-        if ((this.firstY > event.changedTouches[0].screenY - 20) && (this.firstY < event.changedTouches[0].screenY + 20)) {
+        if ((this.firstY > event.changedTouches[0].screenY - 50) && (this.firstY < event.changedTouches[0].screenY + 50) && (this.firstX - event.changedTouches[0].screenX >= 100)) {
           this.$router.push({name: 'vCreateTask'})
         }
       }
