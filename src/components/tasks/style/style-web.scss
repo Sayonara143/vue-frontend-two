@@ -54,10 +54,7 @@
     }
   }
   &-completed{
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     position: absolute;
     width: 212px;
     height: 48px;

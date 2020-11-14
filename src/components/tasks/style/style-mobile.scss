@@ -52,10 +52,8 @@
       display: none;
     }
     &-completed-two{
-      display: flex;
+      @include flex-center;
       margin-top: 50px;
-      align-items: center;
-      justify-content: center;
       position: absolute;
       width: 71px;
       height: 48px;

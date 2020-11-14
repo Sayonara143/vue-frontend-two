@@ -1,2 +1,11 @@
 $textC: #323232; // text color
 $textI: #999999; //input text color
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin wh100 {
+  width: 100vw;
+  height: 100vh;
+}
