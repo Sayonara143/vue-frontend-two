@@ -1,5 +1,8 @@
 <template>
-  <div class="v-card-tasks" :class="{ left: isSide , right: !(isSide) }">
+  <div
+    @dblclick="notice()"
+    class="v-card-tasks"
+    :class="{ left: isSide , right: !(isSide), notice: isNotice}">
     <div class="v-card-tasks-text">
       <div class="v-card-tasks-text-title">{{title}}</div>
       <div class="v-card-tasks-text-date">{{date.day + ' ' + date.month + ' ' + date.year}}</div>
@@ -32,11 +35,20 @@ export default {
       title: '',
       completed: false,
       isSide: true,
+      isNotice: false,
       aTask: [],
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     }
   },
   methods: {
+    notice () {
+      this.isNotice = true
+      console.log(1)
+      let aNotice = JSON.parse(localStorage.getItem('aNotice'))
+      if (aNotice === null) aNotice = []
+      aNotice.push({'id': this.i_index})
+      localStorage.setItem('aNotice', JSON.stringify(aNotice))
+    },
     inc () {
       if (this.completed === true) {
         this.$emit('increment')
@@ -62,6 +74,12 @@ export default {
         .then((result) => {
           this.title = result.data.title
           this.completed = result.data.completed
+          let id = result.data.id
+          let aNotice = JSON.parse(localStorage.getItem('aNotice'))
+          aNotice.forEach(notice => {
+            if (notice.id === id) this.isNotice = true
+          })
+
           this.inc()
         })
     } else {
@@ -70,6 +88,11 @@ export default {
         if (this.i_index === this.aTask[i].id) {
           this.title = this.aTask[i].taskName
           this.completed = false
+          let id = this.i_index
+          let aNotice = JSON.parse(localStorage.getItem('aNotice'))
+          aNotice.forEach(notice => {
+            if (notice.id === id) this.isNotice = true
+          })
           break
         }
       }

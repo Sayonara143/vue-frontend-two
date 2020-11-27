@@ -3,7 +3,7 @@
     <div class="v-tasks-wrapper">
       <div class="v-tasks-wrapper-header">Tasks</div>
       <div class="v-tasks-wrapper-block">
-        <vCardTask  @increment="parentIncrement()" v-for="(index) in this.taskCount" :key="index" :i_index="index"/>
+        <vCardTask  @increment="parentIncrement()"  v-for="(index) in this.taskCount" :key="index" :i_index="index"/>
         <router-link :to="{name: 'vCreateTask'}">
           <div class="v-tasks-wrapper-block-newTask">
             <div class="v-tasks-wrapper-block-newTask-center">
@@ -34,7 +34,8 @@ export default {
       count: 0,
       taskCount: 0,
       firstX: 0,
-      firstY: 0
+      firstY: 0,
+      completed: false
     }
   },
   methods: {

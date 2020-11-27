@@ -1,4 +1,7 @@
 @media screen and (max-width: 600px){
+  .notice{
+    border-right: 3px solid red;
+  }
   .v-tasks{
     width: 100%;
     display: flex;
